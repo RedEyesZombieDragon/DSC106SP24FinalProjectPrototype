@@ -751,14 +751,14 @@ var app = (function () {
     		c: function create() {
     			section = element("section");
     			p0 = element("p");
-    			p0.textContent = "This interactive website aims to explore whether the featured artists that Spotify promotes could\r\n    fall under the category of the term \"industry plant\". To begin with, let us first define what an \r\n    industry plant is. An industry plant in the music industry is an artist that becomes popular through\r\n    means of connections, nepotism and wealth rather than their merits.";
+    			p0.textContent = "This interactive website aims to explore whether the featured artists that\r\n    Spotify promotes could fall under the category of the term \"industry plant\".\r\n    To begin with, let us first define what an industry plant is. An industry\r\n    plant in the music industry is an artist that becomes popular through means\r\n    of connections, nepotism and wealth rather than their merits.";
     			t1 = space();
     			p1 = element("p");
-    			p1.textContent = "For this exploration, we will do it in two parts. First, we will look into the\r\n    growth of featured artists on spotify. Specifically, the following visualization explores the growth\r\n    of artists that are refferred to as Industry plants currently.";
+    			p1.textContent = "For this exploration, we will do it in two parts. First, we will look into\r\n    the growth of featured artists on spotify. Specifically, the following\r\n    visualization explores the growth of artists that are refferred to as\r\n    Industry plants currently.";
     			attr_dev(p0, "class", "body-text");
     			add_location(p0, file$6, 4, 2, 36);
     			attr_dev(p1, "class", "body-text");
-    			add_location(p1, file$6, 10, 2, 455);
+    			add_location(p1, file$6, 11, 2, 458);
     			add_location(section, file$6, 3, 0, 23);
     		},
     		l: function claim(nodes) {
@@ -4703,36 +4703,36 @@ var app = (function () {
     			option4.textContent = "Pink Pantheress";
     			set_style(h1, "text-align", "center");
     			set_style(h1, "color", "white");
-    			add_location(h1, file$5, 176, 0, 5423);
+    			add_location(h1, file$5, 195, 0, 5621);
     			attr_dev(svg, "id", "chart");
-    			attr_dev(svg, "class", "svelte-3ztdj0");
-    			add_location(svg, file$5, 178, 2, 5577);
+    			attr_dev(svg, "class", "svelte-1ij928e");
+    			add_location(svg, file$5, 199, 2, 5781);
     			option0.__value = "Coi Leray";
     			option0.value = option0.__value;
-    			add_location(option0, file$5, 181, 6, 5754);
+    			add_location(option0, file$5, 204, 6, 5967);
     			option1.__value = "Ice Spice";
     			option1.value = option1.__value;
-    			add_location(option1, file$5, 182, 6, 5806);
+    			add_location(option1, file$5, 205, 6, 6019);
     			option2.__value = "The Kid Laroi";
     			option2.value = option2.__value;
-    			add_location(option2, file$5, 183, 6, 5858);
+    			add_location(option2, file$5, 206, 6, 6071);
     			option3.__value = "Dominic Fike";
     			option3.value = option3.__value;
-    			add_location(option3, file$5, 184, 6, 5918);
+    			add_location(option3, file$5, 207, 6, 6131);
     			option4.__value = "PinkPantheress";
     			option4.value = option4.__value;
-    			add_location(option4, file$5, 185, 6, 5976);
+    			add_location(option4, file$5, 208, 6, 6189);
     			attr_dev(select_1, "id", "options");
-    			attr_dev(select_1, "class", "svelte-3ztdj0");
-    			add_location(select_1, file$5, 180, 4, 5697);
+    			attr_dev(select_1, "class", "svelte-1ij928e");
+    			add_location(select_1, file$5, 203, 4, 5910);
     			set_style(div0, "display", "flex");
     			set_style(div0, "align-items", "center");
     			set_style(div0, "justify-content", "center");
     			set_style(div0, "flex-grow", "1");
-    			add_location(div0, file$5, 179, 2, 5603);
+    			add_location(div0, file$5, 200, 2, 5807);
     			set_style(div1, "display", "flex");
     			set_style(div1, "justify-content", "space-between");
-    			add_location(div1, file$5, 177, 0, 5513);
+    			add_location(div1, file$5, 198, 0, 5717);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4805,10 +4805,10 @@ var app = (function () {
     	});
 
     	function parseCSV(text) {
-    		const rows = text.split('\n').slice(1);
+    		const rows = text.split("\n").slice(1);
 
     		return rows.map(row => {
-    			const columns = row.split(',');
+    			const columns = row.split(",");
 
     			if (columns.length > 3) {
     				const name = columns[2].trim();
@@ -4951,7 +4951,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			if (default_slot) default_slot.c();
-    			add_location(div, file$4, 80, 2, 2222);
+    			add_location(div, file$4, 80, 0, 2086);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -22928,19 +22928,19 @@ var app = (function () {
     			h1.textContent = "Write-up";
     			t1 = space();
     			p0 = element("p");
-    			p0.textContent = "1. So far, for this project, we have gotten the first visualization working and some of style choices\r\n    for the website established. Because we are utilizing spotify metadata, we decided to go with a spotify\r\n    themed color scheme. In our first visualization, we aim to just show the reader some trends of growth\r\n    that are present in perceived \"Industry Plants\". This first visualization is interactive in that you\r\n    can hover over the dots to get the exact number and you can change the artist that you see information\r\n    for.";
+    			p0.textContent = "1. So far, for this project, we have gotten the first visualization working\r\n    and some of style choices for the website established. Because we are\r\n    utilizing spotify metadata, we decided to go with a spotify themed color\r\n    scheme. In our first visualization, we aim to just show the reader some\r\n    trends of growth that are present in perceived \"Industry Plants\". This first\r\n    visualization is interactive in that you can hover over the dots to get the\r\n    exact number and you can change the artist that you see information for.";
     			t3 = space();
     			br = element("br");
     			t4 = space();
     			p1 = element("p");
-    			p1.textContent = "2. In terms of what will be the most challenging parts to design for this project going forward, we see\r\n    2 parts. First off, the plan is to add at least one more visualization to cement the point that the term\r\n    Industry Plant is not real. We plan on doing this by making a visualization that compares these growth\r\n    trends to those of established artists. The second challenging part is creating a compelling narrative\r\n    for a reader to explore as they go through our website. We plan on doing this by adding more visual elements.\r\n    One idea we had about this is to add a quote or statistic from an outside reference from something about\r\n    industry plants. Lastly, we also still need to remove the extraneous code that was given from the template.";
+    			p1.textContent = "2. In terms of what will be the most challenging parts to design for this\r\n    project going forward, we see 2 parts. First off, the plan is to add at\r\n    least one more visualization to cement the point that the term Industry\r\n    Plant is not real. We plan on doing this by making a visualization that\r\n    compares these growth trends to those of established artists. The second\r\n    challenging part is creating a compelling narrative for a reader to explore\r\n    as they go through our website. We plan on doing this by adding more visual\r\n    elements. One idea we had about this is to add a quote or statistic from an\r\n    outside reference from something about industry plants. Lastly, we also\r\n    still need to remove the extraneous code that was given from the template.";
     			attr_dev(h1, "class", "body-header");
     			add_location(h1, file$2, 1, 2, 29);
     			attr_dev(p0, "class", "body-text");
     			add_location(p0, file$2, 2, 2, 70);
-    			add_location(br, file$2, 10, 2, 650);
+    			add_location(br, file$2, 11, 2, 655);
     			attr_dev(p1, "class", "body-text");
-    			add_location(p1, file$2, 11, 2, 658);
+    			add_location(p1, file$2, 12, 2, 665);
     			attr_dev(section, "id", "conclusion");
     			attr_dev(section, "class", "svelte-x4u2ks");
     			add_location(section, file$2, 0, 0, 0);
@@ -23039,7 +23039,7 @@ var app = (function () {
     			h3.textContent = "Datasets and sources";
     			t1 = space();
     			p0 = element("p");
-    			t2 = text("This article is a product of the following resources: (Ignore for now as this is just what was\r\n    in the original template, will be changed)\r\n    ");
+    			t2 = text("This article is a product of the following resources: (Ignore for now as\r\n    this is just what was in the original template, will be changed)\r\n    ");
     			br0 = element("br");
     			br1 = element("br");
     			t3 = space();

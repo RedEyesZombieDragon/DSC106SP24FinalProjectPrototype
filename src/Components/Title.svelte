@@ -1,9 +1,7 @@
 <section id="intro">
   <h1 id="intro-hed">Are Industry Plants Real?</h1>
   <h1 class="intro-sub">An Exploration into Spotify Featured Artists</h1>
-  <h3 id="intro__date">
-    Akshay Medidi and Pranav K: May 2024
-  </h3>
+  <h3 id="intro__date">Akshay Medidi and Pranav K: May 2024</h3>
 </section>
 
 <style>

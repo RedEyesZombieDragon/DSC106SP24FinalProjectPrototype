@@ -1,8 +1,8 @@
 <section id="resources">
   <h3 class="body-header">Datasets and sources</h3>
   <p class="body-text">
-    This article is a product of the following resources: (Ignore for now as this is just what was
-    in the original template, will be changed)
+    This article is a product of the following resources: (Ignore for now as
+    this is just what was in the original template, will be changed)
     <br /><br />
   </p>
   <div class="resource-list">

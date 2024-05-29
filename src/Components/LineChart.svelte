@@ -32,60 +32,65 @@
   });
 
   function parseCSV(text) {
-    const rows = text.split('\n').slice(1); 
-    return rows.map(row => {
-      const columns = row.split(',');
-      if (columns.length > 3) {
-        const name = columns[2].trim();
-        const dateStr = columns[0].trim();
-        let listeners = columns[3].trim();
+    const rows = text.split("\n").slice(1);
+    return rows
+      .map((row) => {
+        const columns = row.split(",");
+        if (columns.length > 3) {
+          const name = columns[2].trim();
+          const dateStr = columns[0].trim();
+          let listeners = columns[3].trim();
 
-        listeners = +listeners.replace(/[^0-9]/g, "");
+          listeners = +listeners.replace(/[^0-9]/g, "");
 
-        
-        const date = parseDate(dateStr);
+          const date = parseDate(dateStr);
 
-        return {
-          name: name.toLowerCase(),
-          date: date,
-          listeners: listeners
-        };
-      }
-      return null;
-    }).filter(d => d !== null);
+          return {
+            name: name.toLowerCase(),
+            date: date,
+            listeners: listeners,
+          };
+        }
+        return null;
+      })
+      .filter((d) => d !== null);
   }
 
   function filterData(artist) {
-    return allData.filter(d => d.name === artist.toLowerCase());
+    return allData.filter((d) => d.name === artist.toLowerCase());
   }
 
   function createChart() {
     const svg = select("#chart")
       .attr("width", width)
       .attr("height", height)
-      .html("") 
+      .html("")
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const x = scaleTime()
-      .domain(extent(data, d => d.date))
+      .domain(extent(data, (d) => d.date))
       .range([0, width - margin.left - margin.right]);
 
     const y = scaleLinear()
-      .domain([Math.floor(Math.min(...data.map(d => d.listeners)) / 1e6) * 1e6, Math.ceil(Math.max(...data.map(d => d.listeners)) / 1e6) * 1e6])
+      .domain([
+        Math.floor(Math.min(...data.map((d) => d.listeners)) / 1e6) * 1e6,
+        Math.ceil(Math.max(...data.map((d) => d.listeners)) / 1e6) * 1e6,
+      ])
       .range([height - margin.top - margin.bottom, 0]);
 
-    svg.append("g")
-      .call(axisLeft(y).tickFormat(format("~s")));
+    svg.append("g").call(axisLeft(y).tickFormat(format("~s")));
 
-    svg.append("g")
+    svg
+      .append("g")
       .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
       .call(axisBottom(x).tickFormat(formatDate));
 
     svg.selectAll(".domain").style("stroke", "white");
     svg.selectAll(".tick line").style("stroke", "white");
 
-    svg.append("rect")
+    svg
+      .append("rect")
       .attr("x", 0)
       .attr("y", 0)
       .attr("height", height - margin.top - margin.bottom)
@@ -95,18 +100,20 @@
       .style("stroke-width", "2px");
 
     const lineGenerator = line()
-      .x(d => x(d.date))
-      .y(d => y(d.listeners))
+      .x((d) => x(d.date))
+      .y((d) => y(d.listeners))
       .curve(curveBasis);
 
-    svg.append("path")
+    svg
+      .append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", "limegreen")
       .attr("stroke-width", 1.5)
       .attr("d", lineGenerator);
 
-    const horizontalLine = svg.append("line")
+    const horizontalLine = svg
+      .append("line")
       .attr("class", "hover-line")
       .attr("x1", 0)
       .attr("x2", width - margin.left - margin.right)
@@ -116,52 +123,64 @@
       .attr("stroke-width", 1)
       .attr("opacity", 0);
 
-    const textLabel = svg.append("text")
+    const textLabel = svg
+      .append("text")
       .attr("class", "hover-text")
-      .attr("x", width - margin.left - margin.right - 10) 
+      .attr("x", width - margin.left - margin.right - 10)
       .attr("y", 0)
       .attr("dy", "-0.5em")
       .attr("text-anchor", "end")
       .attr("fill", "white")
       .attr("opacity", 0);
 
-    svg.selectAll(".dot")
+    svg
+      .selectAll(".dot")
       .data(data)
-      .enter().append("circle") 
-      .attr("class", "dot") 
-      .attr("cx", function(d) { return x(d.date) })
-      .attr("cy", function(d) { return y(d.listeners) })
-      .attr("r", 5) 
+      .enter()
+      .append("circle")
+      .attr("class", "dot")
+      .attr("cx", function (d) {
+        return x(d.date);
+      })
+      .attr("cy", function (d) {
+        return y(d.listeners);
+      })
+      .attr("r", 5)
       .style("fill", "white")
-      .on("mouseover", function(event, d) {
-        select(this).attr("r", 7); 
+      .on("mouseover", function (event, d) {
+        select(this).attr("r", 7);
         horizontalLine
           .attr("y1", y(d.listeners))
           .attr("y2", y(d.listeners))
           .attr("opacity", 1);
         textLabel
           .attr("y", y(d.listeners))
-          .attr("x", x(d.date) + 10) 
+          .attr("x", x(d.date) + 10)
           .attr("opacity", 1)
           .text(format("~s")(d.listeners));
       })
-      .on("mouseout", function(d) {
-        select(this).attr("r", 5); 
+      .on("mouseout", function (d) {
+        select(this).attr("r", 5);
         horizontalLine.attr("opacity", 0);
         textLabel.attr("opacity", 0);
       });
 
-    svg.append("text")
+    svg
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left)
-      .attr("x", 0 - (height / 2) + 35)
+      .attr("x", 0 - height / 2 + 35)
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .style("fill", "white")
       .text("Monthly Listeners (In Millions)");
 
-    svg.append("text")
-      .attr("transform", `translate(${(width - margin.left - margin.right) / 2} ,${height - margin.top + margin.bottom - 10})`) 
+    svg
+      .append("text")
+      .attr(
+        "transform",
+        `translate(${(width - margin.left - margin.right) / 2} ,${height - margin.top + margin.bottom - 10})`
+      )
       .style("text-anchor", "middle")
       .style("fill", "white")
       .text("Date");
@@ -174,10 +193,14 @@
   }
 </script>
 
-<h1 style="text-align: center; color: white;">Monthly Listeners for Industry Plants</h1>
+<h1 style="text-align: center; color: white;">
+  Monthly Listeners for Industry Plants
+</h1>
 <div style="display: flex; justify-content: space-between;">
   <svg id="chart"></svg>
-  <div style="display: flex; align-items: center; justify-content: center; flex-grow: 1;">
+  <div
+    style="display: flex; align-items: center; justify-content: center; flex-grow: 1;"
+  >
     <select id="options" on:change={handleSelection}>
       <option value="Coi Leray">Coi Leray</option>
       <option value="Ice Spice">Ice Spice</option>
@@ -195,8 +218,8 @@
   }
 
   #options {
-    margin-left: 20px; 
-    font-size: 16px; 
+    margin-left: 20px;
+    font-size: 16px;
   }
 
   .hover-line {
@@ -210,4 +233,3 @@
     opacity: 0;
   }
 </style>
-
